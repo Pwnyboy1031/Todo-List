@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 #wrapper {
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -18,7 +19,14 @@ header, footer {
 
 header {
     grid-area: 1/1/2/3;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: bolder;
 }
+
 footer {
     grid-area: 3/1/4/3;
 }
@@ -28,9 +36,18 @@ h1 {
 
 body,html {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #sidebar {
     grid-area: 2/1/2/2;
     background-color: rgb(236, 236, 236);
+}
+
+.project {
+    padding-left: 10px;
+}
+
+.project:hover {
+    background-color: rgb(197, 197, 197) ;
 }
