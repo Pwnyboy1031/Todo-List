@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/dom.js":
+/*!********************!*\
+  !*** ./src/dom.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"updateSidebar\": () => (/* binding */ updateSidebar)\n/* harmony export */ });\n/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.js */ \"./src/index.js\");\n\r\n\r\n// find layout\r\nconst sidebar = document.getElementById(\"sidebar\");\r\n\r\nfunction updateSidebar() {\r\n    for (let i = 0; i < _index_js__WEBPACK_IMPORTED_MODULE_0__.myProjects.length; i++) {\r\n        let project = document.createElement(\"h2\");\r\n        project.setAttribute(\"id\", _index_js__WEBPACK_IMPORTED_MODULE_0__.myProjects[i].title);\r\n        project.setAttribute(\"class\", \"project\")\r\n        project.innerText = `${_index_js__WEBPACK_IMPORTED_MODULE_0__.myProjects[i].title}`;\r\n        sidebar.appendChild(project);\r\n    }\r\n};\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/dom.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n/* harmony import */ var _toDo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toDo */ \"./src/toDo.js\");\n\r\n\r\n\r\nconsole.log(\"Hello World\")\r\n\r\nfunction init() {\r\n    let defaultList = new _project__WEBPACK_IMPORTED_MODULE_0__.Project(\"Daily\", \"Your daily To-do list.\");\r\n    console.log(defaultList);\r\n    let toDo1 = new _toDo__WEBPACK_IMPORTED_MODULE_1__.toDo(\"Walk the dog\", \"Take fido for a walk\", \"March 5\", \"Urgent\");\r\n    console.log(toDo1);\r\n    defaultList.list.push(toDo1);\r\n    console.log(defaultList);\r\n}\r\n\r\n\r\ninit();\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"myProjects\": () => (/* binding */ myProjects)\n/* harmony export */ });\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n/* harmony import */ var _toDo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toDo */ \"./src/toDo.js\");\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n\r\n\r\n\r\n\r\nlet myProjects = []; \r\n\r\nfunction init(defaultProjects) {\r\n    let defaultProject = new _project__WEBPACK_IMPORTED_MODULE_0__.Project(\"Daily\", \"Your daily To-do list.\");\r\n    console.log(defaultProject);\r\n    let toDo1 = new _toDo__WEBPACK_IMPORTED_MODULE_1__.toDo(\"Walk the dog\", \"Take fido for a walk\", \"March 5\", \"Urgent\");\r\n    console.log(toDo1);\r\n    defaultProject.list.push(toDo1);\r\n    myProjects.push(defaultProject);\r\n    console.log(defaultProject);\r\n    (0,_dom__WEBPACK_IMPORTED_MODULE_2__.updateSidebar)();\r\n}\r\n\r\n\r\ninit(myProjects);\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ }),
 
@@ -99,7 +109,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
 /******/ 	
 /******/ })()

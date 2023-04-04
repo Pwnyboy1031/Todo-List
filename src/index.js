@@ -1,16 +1,21 @@
 import { Project } from "./project"
 import {toDo} from "./toDo"
+import { updateSidebar } from "./dom";
 
-console.log("Hello World")
+let myProjects = []; 
 
-function init() {
-    let defaultList = new Project("Daily", "Your daily To-do list.");
-    console.log(defaultList);
+function init(defaultProjects) {
+    let defaultProject = new Project("Daily", "Your daily To-do list.");
+    console.log(defaultProject);
     let toDo1 = new toDo("Walk the dog", "Take fido for a walk", "March 5", "Urgent");
     console.log(toDo1);
-    defaultList.list.push(toDo1);
-    console.log(defaultList);
+    defaultProject.list.push(toDo1);
+    myProjects.push(defaultProject);
+    console.log(defaultProject);
+    updateSidebar();
 }
 
 
-init();
+init(myProjects);
+
+export {myProjects}
