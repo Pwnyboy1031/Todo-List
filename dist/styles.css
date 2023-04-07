@@ -15,6 +15,8 @@ header, footer {
 
 #main {
     grid-area: 2/2/3/3;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -25,6 +27,7 @@ header {
     align-items: center;
     color: white;
     font-weight: bolder;
+    padding-left: 10px;
 }
 
 footer {
@@ -51,4 +54,78 @@ body,html {
 
 .project:hover {
     background-color: rgb(197, 197, 197) ;
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+#newTodoForm {
+    position: fixed;
+    width: 25vw;
+    height: 40vh;
+    background-color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#newTodoForm > button {
+    width: 5vw;
+    align-self: center;
+    margin: 2vh;
+    background-color: #53ba6a;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #53ba6a;
+    color: white;
+    height: 5vh;
+    width: 20vw;
+    font-size: 2em;
+    font-style: bold;
+}
+
+#newTodoForm > button:hover {
+    background-color: #499e5e;
+    border-color: #499e5e;
+}
+
+#newTodoForm > textarea {
+    resize: none;
+}
+
+.selected {
+    background-color: rgb(197, 197, 197);
+}
+
+#addTodo {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    border-style: solid;
+    background-color: #53ba6a;
+    border-color: #53ba6a;
+    font-size: 3em;
+    color: white;
+    align-self: flex-end;
+    margin: 15px;
+    text-align: center;
+}
+
+#addTodo:hover {
+    cursor: pointer;
 }

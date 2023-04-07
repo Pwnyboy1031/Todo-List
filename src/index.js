@@ -1,8 +1,10 @@
 import { Project } from "./project"
 import {toDo} from "./toDo"
-import { updateSidebar } from "./dom";
+import { updateSidebar,displayTodoInput,addTodoButton } from "./dom";
 
 let myProjects = []; 
+
+
 
 function init(defaultProjects) {
     let defaultProject = new Project("Daily", "Your daily To-do list.");
@@ -11,8 +13,28 @@ function init(defaultProjects) {
     myProjects.push(defaultProject, defaultGroceries);
     console.log(defaultProject);
     updateSidebar();
+ 
 }
 
+function newTodo() {
+
+};
+
+// add new todo
+addTodoButton.addEventListener("click", (e) => {
+    displayTodoInput();
+});
+
+sidebar.addEventListener("click", (e) => {
+    let projects = document.querySelectorAll(".project");
+    // remove selected  from all other projects elements
+    projects.forEach(project => {
+        project.classList.remove("selected");
+    })
+
+    // add selected class to target
+    e.target.classList.add("selected");
+})
 
 init(myProjects);
 
