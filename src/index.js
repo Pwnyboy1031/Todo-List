@@ -1,6 +1,6 @@
 import { Project } from "./project"
 import {toDo} from "./toDo"
-import { updateSidebar,displayTodoInput,addTodoButton } from "./dom";
+import { updateSidebar,displayTodoInput,addTodoButton, submitBtn } from "./dom";
 
 let myProjects = []; 
 
@@ -16,17 +16,23 @@ function init(defaultProjects) {
  
 }
 
-function newTodo() {
+// create a new to do and add it to projects
+function createNewTodo(title, dueDate, description) {
+    const newToDo = new toDo(title, dueDate, description);
+    console.log(newToDo);
 
+    // this needs to add new todo to project based on the selected h2
+    document.querySelector(".selected")
 };
 
-// add new todo
+// display new todo input
 addTodoButton.addEventListener("click", (e) => {
     displayTodoInput();
 });
 
 sidebar.addEventListener("click", (e) => {
-    let projects = document.querySelectorAll(".project");
+    if (e.target.classList.contains("project")) {
+        let projects = document.querySelectorAll(".project");
     // remove selected  from all other projects elements
     projects.forEach(project => {
         project.classList.remove("selected");
@@ -34,8 +40,10 @@ sidebar.addEventListener("click", (e) => {
 
     // add selected class to target
     e.target.classList.add("selected");
+    }
+    
 })
 
 init(myProjects);
 
-export {myProjects}
+export {myProjects, createNewTodo}
