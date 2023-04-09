@@ -1,19 +1,24 @@
-import { Project } from "./project"
+import { Project, projectDictionary } from "./project"
 import {toDo} from "./toDo"
 import { updateSidebar,displayTodoInput,addTodoButton, submitBtn } from "./dom";
 
-let myProjects = []; 
 
-
-
-function init(defaultProjects) {
-    let defaultProject = new Project("Daily", "Your daily To-do list.");
-    let defaultGroceries = new Project("Groceries", "Shopping List for the week", null);
-    let toDo1 = new toDo("Walk the dog", "Take fido for a walk", "March 5", "Urgent");
-    myProjects.push(defaultProject, defaultGroceries);
-    console.log(defaultProject);
+function init() {
+    const defaultProjects = [
+        new Project("Daily", "Your daily To-do list."),
+        new Project("Groceries", "Shopping List for the week", null),
+    ];
+    defaultProjects.forEach((project => {
+        const projectInstance = new Project(project.title, project.description, project.list);
+        projectInstance.addProjectToDictionary();
+    }));
     updateSidebar();
- 
+}
+
+// create a new project and add it to the dictionary
+function createNewProject() {
+    const newProject = new Project(title, description, list);
+    projectDictionary[title] = newProject;
 }
 
 // create a new to do and add it to projects
@@ -24,6 +29,7 @@ function createNewTodo(title, dueDate, description) {
     // this needs to add new todo to project based on the selected h2
     document.querySelector(".selected")
 };
+
 
 // display new todo input
 addTodoButton.addEventListener("click", (e) => {
@@ -44,6 +50,6 @@ sidebar.addEventListener("click", (e) => {
     
 })
 
-init(myProjects);
+init();
 
-export {myProjects, createNewTodo}
+export {createNewTodo}

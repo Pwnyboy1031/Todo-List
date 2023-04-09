@@ -1,5 +1,6 @@
 import { add } from "date-fns";
 import { Project, myProjects, createNewTodo } from "./index.js";
+import { projectDictionary } from "./project.js";
 
 // find layout
 const sidebar = document.getElementById("sidebar");
@@ -14,13 +15,18 @@ main.appendChild(addTodoButton);
 
 
 function updateSidebar() {
-    for (let i = 0; i < myProjects.length; i++) {
-        let project = document.createElement("h2");
-        project.setAttribute("id", myProjects[i].title);
-        project.setAttribute("class", "project")
-        project.innerText = `${myProjects[i].title}`;
-        sidebar.appendChild(project);
+    const sidebar = document.querySelector("#sidebar");
+    const projectList = document.createElement("ul");
+
+    for (const projectTitle in projectDictionary) {
+        const project = projectDictionary[projectTitle];
+        const listItem = document.createElement("li");
+        listItem.textContent = projectTitle;
+        listItem.setAttribute("class", "project")
+        projectList.appendChild(listItem);
     }
+
+    sidebar.appendChild(projectList);
 };
 
 function updateProjectView() {
