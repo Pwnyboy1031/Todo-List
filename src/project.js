@@ -4,6 +4,10 @@ class Project {
         this.description = description;
         this.list = list;
     }
+
+    addToDo(todo) {
+        this.list.push(todo);
+    }
 }
 
 export {Project}
