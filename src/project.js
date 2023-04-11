@@ -5,7 +5,6 @@ class Project {
         this.title = title;
         this.description = description;
         this.list = list;
-        projectDictionary[title] = this;
     }
 
     addToDo(todo) {

@@ -1,5 +1,5 @@
 import { add } from "date-fns";
-import { Project, myProjects, createNewTodo } from "./index.js";
+import { Project, myProjects, createNewTodo, createNewProject } from "./index.js";
 import { projectDictionary } from "./project.js";
 
 // find layout
@@ -8,14 +8,20 @@ const overlay = document.getElementById("overlay");
 const main = document.getElementById("main");
 const addTodoButton = document.createElement("button");
 const submitBtn = document.createElement("button");
+const projectSubmit = document.createElement("button");
 addTodoButton.setAttribute("id", "addTodo");
 addTodoButton.innerText = "+";
 main.appendChild(addTodoButton);
+const newProjectBtn = document.createElement("button");
+newProjectBtn.setAttribute("id", "newProject");
+newProjectBtn.innerText = "New Project";
+const titleInput = document.createElement("input");
 
 
 
 function updateSidebar() {
     const sidebar = document.querySelector("#sidebar");
+    sidebar.innerHTML = "";
     const projectList = document.createElement("ul");
 
     for (const projectTitle in projectDictionary) {
@@ -27,11 +33,10 @@ function updateSidebar() {
     }
 
     sidebar.appendChild(projectList);
-};
-
-function updateProjectView() {
     
-}
+    sidebar.appendChild(newProjectBtn);
+    console.log(projectDictionary);
+};
 
 function displayTodoInput() {
     // display form with overlay
@@ -42,7 +47,7 @@ function displayTodoInput() {
     // title
     const lblTitle = document.createElement("label");
     lblTitle.innerText = "Title";
-    const titleInput = document.createElement("input");
+    
     titleInput.setAttribute("id", "todoTitle");
 
     // description
@@ -60,7 +65,10 @@ function displayTodoInput() {
     dueDateInput.setAttribute("id", "todoDueDate");
 
     // submit
+   
     submitBtn.innerText = "Create Task";
+    
+    
 
     form.appendChild(lblTitle);
     form.appendChild(titleInput);
@@ -71,6 +79,31 @@ function displayTodoInput() {
     form.appendChild(submitBtn);
     
     overlay.appendChild(form);
+
+    
+};
+
+function displayProjectInput() {
+    // display form with overlay
+    overlay.style.display = "flex";
+    const form = document.createElement("form");
+    form.setAttribute("id", "newProjectForm");
+
+    // title
+    const lblTitle = document.createElement("label");
+    lblTitle.innerText = "Title";
+    
+    titleInput.setAttribute("id", "projectTitle");
+
+    // submit
+    projectSubmit.innerText = "Create Project";
+
+    form.appendChild(lblTitle);
+    form.appendChild(titleInput);
+    form.appendChild(projectSubmit);
+    
+    overlay.appendChild(form);
+    
 }
 
 submitBtn.addEventListener("click", (e) => {
@@ -80,7 +113,23 @@ submitBtn.addEventListener("click", (e) => {
     const description = document.querySelector("#todoDescription").value;
 
     createNewTodo(title, dueDate, description);
+    
+    // clear input values, hide overlay
+    document.querySelector("#todoTitle").value = "";
+    document.querySelector("#todoDueDate").value = "";
+    document.querySelector("#todoDescription").value = "";
     overlay.style.display = "none";
+});
+
+projectSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const projectTitle = document.getElementById("projectTitle").value;
+    console.log(projectTitle);
+    createNewProject(projectTitle);
+
+    // clear input values, hide overlay
+    overlay.style.display = "none";
+    document.getElementById("projectTitle").value = "";
 })
 
-export {updateSidebar, displayTodoInput, sidebar, addTodoButton}
+export {updateSidebar, displayTodoInput, displayProjectInput, sidebar, addTodoButton, newProjectBtn}
