@@ -53,6 +53,10 @@ body,html {
     font-weight: bold;
 }
 
+#sidebar > ul > li:hover {
+    cursor: pointer;
+}
+
 ul {
     padding-left: 0;
     margin: 0;
@@ -82,7 +86,7 @@ ul {
     justify-content: center;
 }
 
-#newTodoForm {
+#newTodoForm, #newProjectForm {
     position: fixed;
     width: 25vw;
     height: 40vh;
@@ -104,8 +108,23 @@ ul {
     border-radius: 10px;
     border-color: #53ba6a;
     color: white;
-    height: 5vh;
-    width: 20vw;
+    height: 45px;
+    width: 400px;
+    font-size: 2em;
+    font-style: bold;
+}
+
+#newProjectForm > button {
+    width: 5vw;
+    align-self: center;
+    margin: 2vh;
+    background-color: #53ba6a;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #53ba6a;
+    color: white;
+    height: 45px;
+    width: 400px;
     font-size: 2em;
     font-style: bold;
 }
@@ -139,4 +158,25 @@ ul {
 
 #addTodo:hover {
     cursor: pointer;
+    background-color: #499e5e;
+    border-color: #499e5e;
+}
+
+#newProject {
+    height: 50px;
+    width: 90%;
+    margin: 15px;
+    border-radius: 25px;
+    background-color: #53ba6a;
+    border-style: solid;
+    border-color: #53ba6a;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+}
+
+#newProject:hover {
+    cursor: pointer;
+    background-color: #499e5e;
+    border-color: #499e5e;
 }
