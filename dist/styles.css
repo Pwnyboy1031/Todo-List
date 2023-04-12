@@ -189,7 +189,7 @@ ul {
 }
 
 .mainTodo {
-    height: 20vh;
+    height: auto;
     width: auto;
     display: grid;
     flex-direction: row;
@@ -199,6 +199,7 @@ ul {
     border-top: none;
     grid-template-columns: 1fr 10fr;
     grid-template-rows: 1fr 2fr 1fr;
+    min-height: 10vh
 }
 
 .todoTitle {
@@ -225,4 +226,9 @@ ul {
 
 .todoCheckbox:checked {
     accent-color: #53ba6a;
+}
+
+#welcomeMessage {
+    color: #999;
+    align-self: center;
 }

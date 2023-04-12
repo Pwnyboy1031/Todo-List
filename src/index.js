@@ -1,7 +1,7 @@
 import { Project, projectDictionary } from "./project"
 import {toDo} from "./toDo"
 import { updateSidebar,displayTodoInput,addTodoButton, newProjectBtn, displayProjectInput } from "./dom";
-import { mainLoad } from "./mainLoad";
+import { mainLoad, initMain } from "./mainLoad";
 
 function init() {
     const defaultProjects = [
@@ -27,7 +27,7 @@ function createNewProject(title) {
 // create a new to do and add it to projects
 function createNewTodo(title, dueDate, description) {
     const newToDo = new toDo(title, dueDate, description);
-
+    console.log(newToDo);
     // this needs to add new todo to project based on the selected h2
     const projectName = document.querySelector(".selected").textContent;
     const workingProject = projectDictionary[projectName];
@@ -62,5 +62,6 @@ newProjectBtn.addEventListener("click", (e) => {
 });
 
 init();
+initMain();
 
 export {createNewTodo, createNewProject}

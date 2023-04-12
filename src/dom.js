@@ -1,6 +1,7 @@
 import { add } from "date-fns";
 import { Project, myProjects, createNewTodo, createNewProject } from "./index.js";
 import { projectDictionary } from "./project.js";
+import { mainLoad } from "./mainLoad.js";
 
 // find layout
 const sidebar = document.getElementById("sidebar");
@@ -11,13 +12,13 @@ const submitBtn = document.createElement("button");
 const projectSubmit = document.createElement("button");
 addTodoButton.setAttribute("id", "addTodo");
 addTodoButton.innerText = "+";
-main.appendChild(addTodoButton);
+document.body.appendChild(addTodoButton);
 const newProjectBtn = document.createElement("button");
 newProjectBtn.setAttribute("id", "newProject");
 newProjectBtn.innerText = "New Project";
 const titleInput = document.createElement("input");
-
-
+const descriptionInput = document.createElement("textarea");
+const dueDateInput = document.createElement("input");
 
 function updateSidebar() {
     const sidebar = document.querySelector("#sidebar");
@@ -52,14 +53,14 @@ function displayTodoInput() {
     // description
     const lblDescription = document.createElement("label");
     lblDescription.innerText = "Description";
-    const descriptionInput = document.createElement("textarea");
+    
     descriptionInput.style.height = "10vh";
     descriptionInput.setAttribute("id", "todoDescription");
 
     // due date
     const lblDue = document.createElement("label");
     lblDue.innerText = "Due Date";
-    const dueDateInput = document.createElement("input");
+    
     dueDateInput.setAttribute("type", "date");
     dueDateInput.setAttribute("id", "todoDueDate");
 
@@ -111,6 +112,9 @@ submitBtn.addEventListener("click", (e) => {
     const dueDate = document.querySelector("#todoDueDate").value;
     const description = document.querySelector("#todoDescription").value;
 
+    console.log(title);
+    console.log(dueDate);
+    console.log(description)
     createNewTodo(title, dueDate, description);
     
     // clear input values, hide overlay
@@ -118,6 +122,7 @@ submitBtn.addEventListener("click", (e) => {
     document.querySelector("#todoDueDate").value = "";
     document.querySelector("#todoDescription").value = "";
     overlay.style.display = "none";
+    mainLoad();
 });
 
 projectSubmit.addEventListener("click", (e) => {

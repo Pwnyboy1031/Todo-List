@@ -1,5 +1,12 @@
 import { projectDictionary } from "./project";
 
+function initMain() {
+    const welcomeMessage = document.createElement("h2");
+    welcomeMessage.innerHTML = "Welcome to Now and Later! <br> Select a project to get started."
+    welcomeMessage.setAttribute("id", "welcomeMessage")
+    main.appendChild(welcomeMessage);
+}
+
 function mainLoad() {
     // reset main content
     const main = document.getElementById("main");
@@ -40,7 +47,8 @@ function mainLoad() {
 
 
         main.appendChild(workingTodo);
+        console.log(projectDictionary);
     }
 };
 
-export {mainLoad};
+export {mainLoad, initMain};
