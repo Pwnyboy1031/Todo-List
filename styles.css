@@ -17,6 +17,8 @@ header, footer {
     grid-area: 2/2/3/3;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 
 header {
@@ -154,6 +156,11 @@ ul {
     align-self: flex-end;
     margin: 15px;
     text-align: center;
+    bottom: 100px;
+    right: 40px;
+    position: fixed;
+    box-shadow: 2px 2px 3px #999;
+
 }
 
 #addTodo:hover {
@@ -179,4 +186,43 @@ ul {
     cursor: pointer;
     background-color: #499e5e;
     border-color: #499e5e;
+}
+
+.mainTodo {
+    height: 20vh;
+    width: auto;
+    display: grid;
+    flex-direction: row;
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: 1fr 2fr 1fr;
+}
+
+.todoTitle {
+    font-size: 2em;
+    grid-area: 1/2/2/3; 
+}
+
+.todoDescription {
+    font-size: 1em;
+    grid-area: 2/2/3/3;
+}
+
+.todoDueDate {
+    font-size: 1em;
+    grid-area: 3/2/4/3;
+}
+
+.todoCheckbox {
+    grid-area: 2/1/3/2;
+    height: 5vh;
+    align-self: center;
+    border: 50%;
+}
+
+.todoCheckbox:checked {
+    accent-color: #53ba6a;
 }
