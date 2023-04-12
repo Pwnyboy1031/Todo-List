@@ -35,7 +35,6 @@ function updateSidebar() {
     sidebar.appendChild(projectList);
     
     sidebar.appendChild(newProjectBtn);
-    console.log(projectDictionary);
 };
 
 function displayTodoInput() {
@@ -124,7 +123,6 @@ submitBtn.addEventListener("click", (e) => {
 projectSubmit.addEventListener("click", (e) => {
     e.preventDefault();
     const projectTitle = document.getElementById("projectTitle").value;
-    console.log(projectTitle);
     createNewProject(projectTitle);
 
     // clear input values, hide overlay

@@ -1,7 +1,7 @@
 import { Project, projectDictionary } from "./project"
 import {toDo} from "./toDo"
 import { updateSidebar,displayTodoInput,addTodoButton, newProjectBtn, displayProjectInput } from "./dom";
-
+import { mainLoad } from "./mainLoad";
 
 function init() {
     const defaultProjects = [
@@ -19,7 +19,6 @@ function init() {
 function createNewProject(title) {
     const newProject = new Project(title, "", []);
     newProject.addProjectToDictionary();
-    console.log(projectDictionary);
     updateSidebar();
     document.querySelector("#projectTitle").value = "";
 
@@ -32,7 +31,6 @@ function createNewTodo(title, dueDate, description) {
     // this needs to add new todo to project based on the selected h2
     const projectName = document.querySelector(".selected").textContent;
     const workingProject = projectDictionary[projectName];
-    console.log(workingProject);
     workingProject.addToDo(newToDo);
 };
 
@@ -52,6 +50,9 @@ sidebar.addEventListener("click", (e) => {
 
     // add selected class to target
     e.target.classList.add("selected");
+
+    // load main
+    mainLoad();
     }
     
 })
