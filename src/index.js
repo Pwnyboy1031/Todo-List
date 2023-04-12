@@ -4,14 +4,21 @@ import { updateSidebar,displayTodoInput,addTodoButton, newProjectBtn, displayPro
 import { mainLoad, initMain } from "./mainLoad";
 
 function init() {
-    const defaultProjects = [
-        new Project("Daily", "Your daily To-do list."),
-        new Project("Groceries", "Shopping List for the week", []),
-    ];
-    defaultProjects.forEach((project => {
-        const projectInstance = new Project(project.title, project.description, project.list);
-        projectInstance.addProjectToDictionary();
-    }));
+    if (localStorage.getItem("projectData") === null) {
+        const defaultProjects = [
+            new Project("Daily", "Your daily To-do list."),
+            new Project("Groceries", "Shopping List for the week", []),
+        ];
+        defaultProjects.forEach((project => {
+            const projectInstance = new Project(project.title, project.description, project.list);
+            projectInstance.addProjectToDictionary();
+        }));
+    } else {
+        const storedData = JSON.parse(localStorage.getItem("projectData"));
+        const projects = Object.values(storedData).map(data => new Project(data.title,data.description,data.list));
+        projects.forEach(project => project.addProjectToDictionary());
+    }
+    
     updateSidebar();
 }
 
@@ -19,6 +26,7 @@ function init() {
 function createNewProject(title) {
     const newProject = new Project(title, "", []);
     newProject.addProjectToDictionary();
+    localStorage.setItem("projectData", JSON.stringify(projectDictionary));
     updateSidebar();
     document.querySelector("#projectTitle").value = "";
 
@@ -32,11 +40,26 @@ function createNewTodo(title, dueDate, description) {
     const projectName = document.querySelector(".selected").textContent;
     const workingProject = projectDictionary[projectName];
     workingProject.addToDo(newToDo);
+    localStorage.setItem("projectData", JSON.stringify(projectDictionary));
 };
 
 
 // display new todo input
 addTodoButton.addEventListener("click", (e) => {
+    const sidebarProjects = document.querySelectorAll('.project');
+    let selectedProject = null;
+    for (let i = 0; i < sidebarProjects.length; i++) {
+        if (sidebarProjects[i].classList.contains('selected')) {
+          selectedProject = sidebarProjects[i];
+          break;
+        }
+      }
+      
+      if (!selectedProject) {
+        alert('No project selected!');
+        throw new Error('No project selected!');
+        
+      }
     displayTodoInput();
 });
 

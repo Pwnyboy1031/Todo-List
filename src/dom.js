@@ -1,7 +1,8 @@
-import { add } from "date-fns";
+import { add, format } from "date-fns";
 import { Project, myProjects, createNewTodo, createNewProject } from "./index.js";
 import { projectDictionary } from "./project.js";
 import { mainLoad } from "./mainLoad.js";
+import { cs } from "date-fns/locale";
 
 // find layout
 const sidebar = document.getElementById("sidebar");
@@ -109,12 +110,11 @@ function displayProjectInput() {
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const title = document.querySelector("#todoTitle").value;
-    const dueDate = document.querySelector("#todoDueDate").value;
+    let dueDate = document.querySelector("#todoDueDate").value;
     const description = document.querySelector("#todoDescription").value;
 
-    console.log(title);
-    console.log(dueDate);
-    console.log(description)
+    dueDate = format(new Date(dueDate), 'eeee, MMMM do');
+
     createNewTodo(title, dueDate, description);
     
     // clear input values, hide overlay

@@ -190,6 +190,7 @@ ul {
 
 .mainTodo {
     height: auto;
+    min-height: 20px;
     width: auto;
     display: grid;
     flex-direction: row;
@@ -197,9 +198,15 @@ ul {
     border-left: none;
     border-right: none;
     border-top: none;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 1fr 10fr 1fr;
     grid-template-rows: 1fr 2fr 1fr;
-    min-height: 10vh
+    min-height: 10vh;
+    align-items: center;
+}
+
+.mainTodo > img {
+    height: 60px;
+    grid-area: 3/3/4/4;
 }
 
 .todoTitle {
@@ -215,11 +222,12 @@ ul {
 .todoDueDate {
     font-size: 1em;
     grid-area: 3/2/4/3;
+    color: #999;
 }
 
 .todoCheckbox {
     grid-area: 2/1/3/2;
-    height: 5vh;
+    height: 50%;
     align-self: center;
     border: 50%;
 }

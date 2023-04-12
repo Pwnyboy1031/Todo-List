@@ -45,9 +45,7 @@ function mainLoad() {
         checkbox.setAttribute("class", "todoCheckbox");
         workingTodo.appendChild(checkbox);
 
-
         main.appendChild(workingTodo);
-        console.log(projectDictionary);
     }
 };
 
