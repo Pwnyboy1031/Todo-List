@@ -33,7 +33,7 @@ function updateSidebar() {
         // delete button
         const trash = document.createElement("img");
         trash.setAttribute("class", "trash");
-        trash.setAttribute("src", "/assets/trash.svg");
+        trash.setAttribute("src", "assets/trash.svg");
         listItem.appendChild(trash);
 
         projectList.appendChild(listItem);

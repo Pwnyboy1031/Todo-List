@@ -47,7 +47,7 @@ function mainLoad() {
 
         // delete
         const trashIcon = document.createElement("img");
-        trashIcon.setAttribute("src", "/assets/trash.svg");
+        trashIcon.setAttribute("src", "assets/trash.svg");
         trashIcon.setAttribute("id", `${workingProject.list[todo].title}Trash`)
         trashIcon.setAttribute("class", "trash");
         workingTodo.append(trashIcon);
