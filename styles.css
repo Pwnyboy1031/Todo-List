@@ -204,11 +204,6 @@ ul {
     align-items: center;
 }
 
-.mainTodo > img {
-    height: 60px;
-    grid-area: 3/3/4/4;
-}
-
 .todoTitle {
     font-size: 2em;
     grid-area: 1/2/2/3; 
@@ -239,4 +234,14 @@ ul {
 #welcomeMessage {
     color: #999;
     align-self: center;
+}
+
+.trash {
+    height: 40px;
+    grid-area: 2/3/3/4;
+    justify-self: center;
+}
+
+.trash:hover {
+    cursor: pointer;
 }
