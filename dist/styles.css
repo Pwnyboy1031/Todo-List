@@ -67,10 +67,21 @@ ul {
 .project {
     padding: 10px;
     margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.project > img {
+    display: none;
 }
 
 .project:hover {
     background-color: rgb(197, 197, 197) ;
+}
+
+.project:hover > img {
+    display: block;
 }
 
 #overlay {
@@ -202,6 +213,11 @@ ul {
     grid-template-rows: 1fr 2fr 1fr;
     min-height: 10vh;
     align-items: center;
+}
+
+.strikethrough {
+    text-decoration: line-through solid black 2px;
+    justify-self: flex-end;
 }
 
 .todoTitle {

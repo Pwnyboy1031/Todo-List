@@ -59,6 +59,14 @@ function mainLoad() {
             
         })
 
+        checkbox.addEventListener("click", (e) => {
+            if (checkbox.checked) {
+                workingTodo.classList.add("strikethrough");
+            } else {
+                workingTodo.classList.remove("strikethrough");
+            }
+        })
+
         main.appendChild(workingTodo);
     }
 };

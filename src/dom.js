@@ -6,7 +6,6 @@ import { mainLoad } from "./mainLoad.js";
 // find layout
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
-const main = document.getElementById("main");
 const addTodoButton = document.createElement("button");
 const submitBtn = document.createElement("button");
 const projectSubmit = document.createElement("button");
@@ -30,8 +29,27 @@ function updateSidebar() {
         const listItem = document.createElement("li");
         listItem.textContent = projectTitle;
         listItem.setAttribute("class", "project")
+
+        // delete button
+        const trash = document.createElement("img");
+        trash.setAttribute("class", "trash");
+        trash.setAttribute("src", "/assets/trash.svg");
+        listItem.appendChild(trash);
+
         projectList.appendChild(listItem);
+
+        // delete project
+        trash.addEventListener("click", (e) => {
+            delete projectDictionary[projectTitle];
+            localStorage.setItem("projectData", JSON.stringify(projectDictionary));
+            // reflect changes, select top project
+            updateSidebar();
+            document.querySelector(".project").classList.add("selected");
+            mainLoad();
+        })
     }
+    
+    
 
     sidebar.appendChild(projectList);
     
