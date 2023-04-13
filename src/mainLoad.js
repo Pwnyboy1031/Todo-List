@@ -45,6 +45,20 @@ function mainLoad() {
         checkbox.setAttribute("class", "todoCheckbox");
         workingTodo.appendChild(checkbox);
 
+        // delete
+        const trashIcon = document.createElement("img");
+        trashIcon.setAttribute("src", "/assets/trash.svg");
+        trashIcon.setAttribute("id", `${workingProject.list[todo].title}Trash`)
+        trashIcon.setAttribute("class", "trash");
+        workingTodo.append(trashIcon);
+
+        trashIcon.addEventListener("click", (e) => {
+            workingProject.deleteTodo(workingProject.list[todo]);
+            localStorage.setItem("projectData", JSON.stringify(projectDictionary));
+            mainLoad();
+            
+        })
+
         main.appendChild(workingTodo);
     }
 };
