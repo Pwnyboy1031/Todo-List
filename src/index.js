@@ -13,13 +13,17 @@ function init() {
             const projectInstance = new Project(project.title, project.description, project.list);
             projectInstance.addProjectToDictionary();
         }));
+        initMain();
     } else {
         const storedData = JSON.parse(localStorage.getItem("projectData"));
         const projects = Object.values(storedData).map(data => new Project(data.title,data.description,data.list));
         projects.forEach(project => project.addProjectToDictionary());
+        updateSidebar();
+        document.querySelector(".project").classList.add("selected");
+        mainLoad();
     }
-    
     updateSidebar();
+    document.querySelector(".project").classList.add("selected");
 }
 
 // create a new project and add it to the dictionary
@@ -77,7 +81,6 @@ sidebar.addEventListener("click", (e) => {
     // load main
     mainLoad();
     }
-    
 })
 
 newProjectBtn.addEventListener("click", (e) => {
@@ -85,6 +88,6 @@ newProjectBtn.addEventListener("click", (e) => {
 });
 
 init();
-initMain();
+
 
 export {createNewTodo, createNewProject}

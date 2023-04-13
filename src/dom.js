@@ -1,8 +1,7 @@
-import { add, format } from "date-fns";
-import { Project, myProjects, createNewTodo, createNewProject } from "./index.js";
+import { format } from "date-fns";
+import {  createNewTodo, createNewProject } from "./index.js";
 import { projectDictionary } from "./project.js";
 import { mainLoad } from "./mainLoad.js";
-import { cs } from "date-fns/locale";
 
 // find layout
 const sidebar = document.getElementById("sidebar");
@@ -111,6 +110,10 @@ submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const title = document.querySelector("#todoTitle").value;
     let dueDate = document.querySelector("#todoDueDate").value;
+    if (dueDate === "" ){
+        alert("Please input a due date.");
+        return;
+    }
     const description = document.querySelector("#todoDescription").value;
 
     dueDate = format(new Date(dueDate), 'eeee, MMMM do');
